@@ -20,8 +20,8 @@ def get_db():
     )
 
 # ---------------- EMAIL CONFIG ----------------
-SENDER_EMAIL = "YOUR_EMAIL@gmail.com"
-APP_PASSWORD = "YOUR_APP_PASSWORD"
+SENDER_EMAIL = "gllowkandivali@gmail.com"
+APP_PASSWORD = "whhvhvelvgczgcwp"
 
 # ---------------- EMAIL FUNCTION (FIXED) ----------------
 def send_email(to, subject, body):
