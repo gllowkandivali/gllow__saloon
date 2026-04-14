@@ -9,7 +9,7 @@ import threading
 app = Flask(__name__)
 app.secret_key = "gllow_salon_secret_2026"
 
-# ---------------- DATABASE (RAILWAY) ----------------
+# ---------------- DATABASE ----------------
 def get_db():
     return mysql.connector.connect(
         host="metro.proxy.rlwy.net",
@@ -20,8 +20,10 @@ def get_db():
     )
 
 # ---------------- EMAIL CONFIG ----------------
-SENDER_EMAIL = "Gllowkandivali@gmail.com"
-APP_PASSWORD = "fjuluohqckwudena"   # ⚠️ keep real app password here
+SENDER_EMAIL = "YOUR_EMAIL@gmail.com"
+APP_PASSWORD = "YOUR_APP_PASSWORD"
+
+# ---------------- EMAIL FUNCTION (FIXED) ----------------
 def send_email(to, subject, body):
     try:
         msg = MIMEText(body)
@@ -29,17 +31,25 @@ def send_email(to, subject, body):
         msg["From"] = SENDER_EMAIL
         msg["To"] = to
 
-        server = smtplib.SMTP_SSL("smtp.gmail.com", 465)
+        server = smtplib.SMTP("smtp.gmail.com", 587)
+        server.starttls()
         server.login(SENDER_EMAIL, APP_PASSWORD)
-        server.send_message(msg)
+        server.sendmail(SENDER_EMAIL, to, msg.as_string())
         server.quit()
+
+        print("Email sent to:", to)
 
     except Exception as e:
         print("Email error:", e)
 
-# 🔥 ASYNC EMAIL (NO TIMEOUT FIX)
+# ---------------- ASYNC EMAIL ----------------
 def send_email_async(to, subject, body):
-    threading.Thread(target=send_email, args=(to, subject, body)).start()
+    try:
+        t = threading.Thread(target=send_email, args=(to, subject, body))
+        t.daemon = True
+        t.start()
+    except Exception as e:
+        print("Async error:", e)
 
 # ---------------- HOME ----------------
 offers = [
@@ -52,7 +62,7 @@ offers = [
 def home():
     return render_template("index.html", offers=offers)
 
-# ---------------- PAGES ----------------
+# ---------------- STATIC PAGES ----------------
 @app.route("/booking")
 def booking():
     return render_template("booking.html")
@@ -95,7 +105,7 @@ def submit():
         if not service:
             service = "Not selected"
 
-        # ---------------- SAVE TO RAILWAY DB ----------------
+        # ---------------- SAVE DB ----------------
         try:
             db = get_db()
             cursor = db.cursor()
@@ -116,6 +126,7 @@ def submit():
         try:
             is_bridal = "Bridal" in service
 
+            # CLIENT EMAIL
             if email:
                 if is_bridal:
                     user_msg = f"""
@@ -142,6 +153,7 @@ Time: {time}
 
                 send_email_async(email, "Appointment Confirmed 💅", user_msg)
 
+            # OWNER EMAIL
             owner_msg = f"""
 🔥 New Booking Alert
 
@@ -151,6 +163,7 @@ Service: {service}
 Date: {date}
 Time: {time}
 """
+
             send_email_async(SENDER_EMAIL, "New Booking 🚨", owner_msg)
 
         except Exception as mail_error:
@@ -234,6 +247,7 @@ Phone: {phone}
 Course: {course}
 Batch: {batch}
 """
+
         send_email_async(SENDER_EMAIL, "New Student 🚨", owner_msg)
 
         return "Registration Successful 🎓"
