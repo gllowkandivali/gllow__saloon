@@ -3,12 +3,13 @@ import urllib.parse
 import mysql.connector
 import smtplib
 from email.mime.text import MIMEText
+import threading
 
 # ---------------- APP ----------------
 app = Flask(__name__)
 app.secret_key = "gllow_salon_secret_2026"
 
-# ---------------- DATABASE ----------------
+# ---------------- DATABASE (RAILWAY) ----------------
 def get_db():
     return mysql.connector.connect(
         host="metro.proxy.rlwy.net",
@@ -20,7 +21,7 @@ def get_db():
 
 # ---------------- EMAIL CONFIG ----------------
 SENDER_EMAIL = "Gllowkandivali@gmail.com"
-APP_PASSWORD = "cnzl qnaq xnwg rbzv"
+APP_PASSWORD = "cnzl qnaq xnwg rbzv"   # ⚠️ keep real app password here
 
 def send_email(to, subject, body):
     try:
@@ -37,6 +38,10 @@ def send_email(to, subject, body):
 
     except Exception as e:
         print("Email error:", e)
+
+# 🔥 ASYNC EMAIL (NO TIMEOUT FIX)
+def send_email_async(to, subject, body):
+    threading.Thread(target=send_email, args=(to, subject, body)).start()
 
 # ---------------- HOME ----------------
 offers = [
@@ -92,22 +97,24 @@ def submit():
         if not service:
             service = "Not selected"
 
-        print("DEBUG:", name, phone, email, service, date, time)
+        # ---------------- SAVE TO RAILWAY DB ----------------
+        try:
+            db = get_db()
+            cursor = db.cursor()
 
-        # -------- SAVE TO DATABASE --------
-        db = get_db()
-        cursor = db.cursor()
+            cursor.execute(
+                "INSERT INTO bookings (name, phone, email, service, date, time) VALUES (%s,%s,%s,%s,%s,%s)",
+                (name, phone, email, service, date, time)
+            )
 
-        cursor.execute(
-            "INSERT INTO bookings (name, phone, email, service, date, time) VALUES (%s,%s,%s,%s,%s,%s)",
-            (name, phone, email if email else None, service, date, time)
-        )
+            db.commit()
+            cursor.close()
+            db.close()
 
-        db.commit()
-        cursor.close()
-        db.close()
+        except Exception as db_error:
+            print("DB ERROR:", db_error)
 
-        # -------- EMAIL --------
+        # ---------------- EMAIL ----------------
         try:
             is_bridal = "Bridal" in service
 
@@ -122,9 +129,7 @@ Service: {service}
 Date: {date}
 Time: {time}
 
-Our team will contact you for full bridal consultation 💖
-
-Thank you for choosing Gllow Salon ✨
+We will contact you soon 💖
 """
                 else:
                     user_msg = f"""
@@ -135,13 +140,10 @@ Your appointment is confirmed 💖
 Service: {service}
 Date: {date}
 Time: {time}
-
-Thank you for choosing Gllow Salon ✨
 """
 
-                send_email(email, "Appointment Confirmed 💅", user_msg)
+                send_email_async(email, "Appointment Confirmed 💅", user_msg)
 
-            # Owner email
             owner_msg = f"""
 🔥 New Booking Alert
 
@@ -151,12 +153,12 @@ Service: {service}
 Date: {date}
 Time: {time}
 """
-            send_email(SENDER_EMAIL, "New Booking 🚨", owner_msg)
+            send_email_async(SENDER_EMAIL, "New Booking 🚨", owner_msg)
 
         except Exception as mail_error:
             print("Email failed:", mail_error)
 
-        # -------- WHATSAPP --------
+        # ---------------- WHATSAPP ----------------
         message = f"""
 Hi Gllow Salon 💖
 
@@ -166,11 +168,8 @@ Service: {service}
 Date: {date}
 Time: {time}
 
-Customer:
-{name}
-📞 {phone}
-
-💄 Bridal & Makeup bookings available 👰
+Name: {name}
+Phone: {phone}
 """
 
         whatsapp_url = "https://wa.me/919819545630?text=" + urllib.parse.quote(message)
@@ -200,7 +199,8 @@ Email: {email}
 Message:
 {message}
 """
-        send_email(SENDER_EMAIL, "New Contact Form 📩", msg)
+
+        send_email_async(SENDER_EMAIL, "New Contact Form 📩", msg)
 
         return "Message Sent Successfully 💖"
 
@@ -225,10 +225,8 @@ You are successfully registered 🎓
 
 Course: {course}
 Batch: {batch}
-
-We will contact you soon 💖
 """
-            send_email(email, "Course Registration Confirmed 🎓", user_msg)
+            send_email_async(email, "Course Registration Confirmed 🎓", user_msg)
 
         owner_msg = f"""
 New Student Registration 🔥
@@ -238,7 +236,7 @@ Phone: {phone}
 Course: {course}
 Batch: {batch}
 """
-        send_email(SENDER_EMAIL, "New Student 🚨", owner_msg)
+        send_email_async(SENDER_EMAIL, "New Student 🚨", owner_msg)
 
         return "Registration Successful 🎓"
 
