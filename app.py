@@ -3,6 +3,7 @@ import urllib.parse
 import mysql.connector
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
+import os
 
 SENDGRID_API_KEY = "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"
 import threading
@@ -258,4 +259,5 @@ Batch: {batch}
 
 # ---------------- RUN ----------------
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
