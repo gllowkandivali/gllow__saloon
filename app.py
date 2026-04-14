@@ -21,7 +21,7 @@ def get_db():
 
 # ---------------- EMAIL CONFIG ----------------
 SENDER_EMAIL = "Gllowkandivali@gmail.com"
-APP_PASSWORD = "cnzl qnaq xnwg rbzv"   # ⚠️ keep real app password here
+APP_PASSWORD = "fjuluohqckwudena"   # ⚠️ keep real app password here
 
 def send_email(to, subject, body):
     try:
