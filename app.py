@@ -31,10 +31,9 @@ def send_email(to, subject, body):
         msg["From"] = SENDER_EMAIL
         msg["To"] = to
 
-        server = smtplib.SMTP("smtp.gmail.com", 587)
-        server.starttls()
+        server = smtplib.SMTP_SSL("smtp.gmail.com", 465)
         server.login(SENDER_EMAIL, APP_PASSWORD)
-        server.sendmail(SENDER_EMAIL, to, msg.as_string())
+        server.send_message(msg)
         server.quit()
 
         print("Email sent to:", to)
