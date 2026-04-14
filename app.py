@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, redirect
 import urllib.parse
 import mysql.connector
-import smtplib
-from email.mime.text import MIMEText
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+
+SENDGRID_API_KEY = "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"
 import threading
 
 # ---------------- APP ----------------
@@ -26,17 +28,17 @@ APP_PASSWORD = "whhvhvelvgczgcwp"
 # ---------------- EMAIL FUNCTION (FIXED) ----------------
 def send_email(to, subject, body):
     try:
-        msg = MIMEText(body)
-        msg["Subject"] = subject
-        msg["From"] = SENDER_EMAIL
-        msg["To"] = to
+        message = Mail(
+            from_email="gllowkandivali@gmail.com",
+            to_emails=to,
+            subject=subject,
+            plain_text_content=body
+        )
 
-        server = smtplib.SMTP_SSL("smtp.gmail.com", 465)
-        server.login(SENDER_EMAIL, APP_PASSWORD)
-        server.send_message(msg)
-        server.quit()
+        sg = SendGridAPIClient(SENDGRID_API_KEY)
+        response = sg.send(message)
 
-        print("Email sent to:", to)
+        print("Email sent:", response.status_code)
 
     except Exception as e:
         print("Email error:", e)
