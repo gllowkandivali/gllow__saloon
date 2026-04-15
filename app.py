@@ -1,19 +1,10 @@
-from flask import Flask, render_template, request, redirect
-import urllib.parse
+from flask import Flask, render_template, request
 import mysql.connector
-from sendgrid import SendGridAPIClient
-from sendgrid.helpers.mail import Mail
 import os
-import threading
 
 # ---------------- APP ----------------
 app = Flask(__name__)
 app.secret_key = "gllow_salon_secret_2026"
-
-# ---------------- ENV VARIABLES ----------------
-SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
-SENDER_EMAIL = "gllowkandivali@gmail.com"
-OWNER_EMAIL = "gllowkandivali@gmail.com"
 
 # ---------------- DATABASE ----------------
 def get_db():
@@ -25,31 +16,6 @@ def get_db():
         port=37012
     )
 
-# ---------------- EMAIL FUNCTION ----------------
-def send_email(to, subject, body):
-    try:
-        message = Mail(
-            from_email=SENDER_EMAIL,
-            to_emails=to,
-            subject=subject,
-            plain_text_content=body
-        )
-
-        sg = SendGridAPIClient(SENDGRID_API_KEY)
-        response = sg.send(message)
-
-        print("✅ Email Sent:", response.status_code)
-
-    except Exception as e:
-        print("❌ EMAIL ERROR:", str(e))
-
-
-# ---------------- ASYNC EMAIL ----------------
-def send_email_async(to, subject, body):
-    t = threading.Thread(target=send_email, args=(to, subject, body))
-    t.start()
-
-
 # ---------------- HOME ----------------
 offers = [
     {"title": "50% OFF Facial ✨", "desc": "Limited time offer"},
@@ -60,13 +26,6 @@ offers = [
 @app.route("/")
 def home():
     return render_template("index.html", offers=offers)
-@app.route("/check-key")
-def check_key():
-    return str(os.environ.get("SENDGRID_API_KEY"))
-@app.route("/email-test")
-def email_test():
-    send_email("yourpersonalemail@gmail.com", "TEST", "WORKING?")
-    return "Check your email"
 
 # ---------------- PAGES ----------------
 @app.route("/booking")
@@ -97,14 +56,12 @@ def contact():
 def register():
     return render_template("register.html")
 
-
 # ---------------- BOOKING ----------------
 @app.route("/submit", methods=["POST"])
 def submit():
     try:
         name = request.form.get("name")
         phone = request.form.get("phone")
-        email = request.form.get("email")
         service = request.form.get("services") or "Not selected"
         date = request.form.get("date")
         time = request.form.get("time")
@@ -115,137 +72,34 @@ def submit():
             cursor = db.cursor()
 
             cursor.execute(
-                "INSERT INTO bookings (name, phone, email, service, date, time) VALUES (%s,%s,%s,%s,%s,%s)",
-                (name, phone, email, service, date, time)
+                "INSERT INTO bookings (name, phone, service, date, time) VALUES (%s,%s,%s,%s,%s)",
+                (name, phone, service, date, time)
             )
 
             db.commit()
             cursor.close()
             db.close()
 
-            print("✅ DB Saved")
+            print("✅ DB Saved:", name, phone, service, date, time)
 
         except Exception as db_error:
             print("❌ DB ERROR:", db_error)
 
-        # -------- EMAIL --------
-        try:
-            is_bridal = "Bridal" in service
-
-            # CLIENT EMAIL
-            if email:
-                user_msg = f"""
-Hi {name},
-
-Your appointment is confirmed 💖
-
-Service: {service}
-Date: {date}
-Time: {time}
-
-See you soon ✨
-"""
-                send_email_async(email, "Appointment Confirmed 💅", user_msg)
-
-            # OWNER EMAIL
-            owner_msg = f"""
-🔥 New Booking Alert
-
-Name: {name}
-Phone: {phone}
-Service: {service}
-Date: {date}
-Time: {time}
-"""
-            send_email_async(OWNER_EMAIL, "New Booking 🚨", owner_msg)
-
-        except Exception as mail_error:
-            print("❌ EMAIL FAIL:", mail_error)
-
-        # -------- WHATSAPP --------
-        message = f"""
-Hi Gllow Salon 💖
-
-✨ New Booking Request ✨
-
-Service: {service}
-Date: {date}
-Time: {time}
-
-Name: {name}
-Phone: {phone}
-"""
-        whatsapp_url = "https://wa.me/919819545630?text=" + urllib.parse.quote(message)
-
+        # -------- CONFIRMATION PAGE --------
         return render_template("confirmation.html")
+
     except Exception as e:
         return f"Error: {str(e)}"
-
 
 # ---------------- CONTACT ----------------
 @app.route("/contact_submit", methods=["POST"])
 def contact_submit():
-    try:
-        name = request.form.get("name")
-        phone = request.form.get("phone")
-        email = request.form.get("email")
-        message = request.form.get("message")
-
-        msg = f"""
-New Contact Message 💬
-
-Name: {name}
-Phone: {phone}
-Email: {email}
-
-Message:
-{message}
-"""
-
-        send_email_async(OWNER_EMAIL, "New Contact Form 📩", msg)
-
-        return "Message Sent Successfully 💖"
-
-    except Exception as e:
-        return f"Error: {str(e)}"
-
+    return "Message received 💖"
 
 # ---------------- REGISTER ----------------
 @app.route("/register_submit", methods=["POST"])
 def register_submit():
-    try:
-        name = request.form.get("name")
-        phone = request.form.get("phone")
-        email = request.form.get("email")
-        course = request.form.get("course")
-        batch = request.form.get("batch")
-
-        if email:
-            user_msg = f"""
-Hi {name},
-
-You are successfully registered 🎓
-
-Course: {course}
-Batch: {batch}
-"""
-            send_email_async(email, "Course Registration Confirmed 🎓", user_msg)
-
-        owner_msg = f"""
-New Student Registration 🔥
-
-Name: {name}
-Phone: {phone}
-Course: {course}
-Batch: {batch}
-"""
-        send_email_async(OWNER_EMAIL, "New Student 🚨", owner_msg)
-
-        return "Registration Successful 🎓"
-
-    except Exception as e:
-        return f"Error: {str(e)}"
-
+    return "Registration Successful 🎓"
 
 # ---------------- RUN ----------------
 if __name__ == "__main__":
