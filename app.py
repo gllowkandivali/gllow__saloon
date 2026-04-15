@@ -94,12 +94,55 @@ def submit():
 # ---------------- CONTACT ----------------
 @app.route("/contact_submit", methods=["POST"])
 def contact_submit():
-    return "Message received 💖"
+    try:
+        name = request.form.get("name")
+        phone = request.form.get("phone")
+        email = request.form.get("email")
+        message = request.form.get("message")
+
+        db = get_db()
+        cursor = db.cursor()
+
+        cursor.execute(
+            "INSERT INTO contacts (name, phone, email, message) VALUES (%s,%s,%s,%s)",
+            (name, phone, email, message)
+        )
+
+        db.commit()
+        cursor.close()
+        db.close()
+
+        return "Message Saved 💖 We will contact you soon!"
+
+    except Exception as e:
+        return f"Error: {str(e)}"
 
 # ---------------- REGISTER ----------------
 @app.route("/register_submit", methods=["POST"])
 def register_submit():
-    return "Registration Successful 🎓"
+    try:
+        name = request.form.get("name")
+        phone = request.form.get("phone")
+        email = request.form.get("email")
+        course = request.form.get("course")
+        batch = request.form.get("batch")
+
+        db = get_db()
+        cursor = db.cursor()
+
+        cursor.execute(
+            "INSERT INTO registrations (name, phone, email, course, batch) VALUES (%s,%s,%s,%s,%s)",
+            (name, phone, email, course, batch)
+        )
+
+        db.commit()
+        cursor.close()
+        db.close()
+
+        return "Registration Saved 🎓"
+
+    except Exception as e:
+        return f"Error: {str(e)}"
 
 # ---------------- RUN ----------------
 if __name__ == "__main__":
