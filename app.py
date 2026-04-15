@@ -60,7 +60,9 @@ offers = [
 @app.route("/")
 def home():
     return render_template("index.html", offers=offers)
-
+@app.route("/check-key")
+def check_key():
+    return str(os.environ.get("SENDGRID_API_KEY"))
 
 # ---------------- PAGES ----------------
 @app.route("/booking")
