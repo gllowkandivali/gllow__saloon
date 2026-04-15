@@ -4,13 +4,16 @@ import mysql.connector
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 import os
-
-SENDGRID_API_KEY = "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"
 import threading
 
 # ---------------- APP ----------------
 app = Flask(__name__)
 app.secret_key = "gllow_salon_secret_2026"
+
+# ---------------- ENV VARIABLES ----------------
+SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
+SENDER_EMAIL = "gllowkandivali@gmail.com"
+OWNER_EMAIL = "gllowkandivali@gmail.com"
 
 # ---------------- DATABASE ----------------
 def get_db():
@@ -22,15 +25,11 @@ def get_db():
         port=37012
     )
 
-# ---------------- EMAIL CONFIG ----------------
-SENDER_EMAIL = "gllowkandivali@gmail.com"
-APP_PASSWORD = "whhvhvelvgczgcwp"
-
-# ---------------- EMAIL FUNCTION (FIXED) ----------------
+# ---------------- EMAIL FUNCTION ----------------
 def send_email(to, subject, body):
     try:
         message = Mail(
-            from_email="gllowkandivali@gmail.com",
+            from_email=SENDER_EMAIL,
             to_emails=to,
             subject=subject,
             plain_text_content=body
@@ -39,19 +38,17 @@ def send_email(to, subject, body):
         sg = SendGridAPIClient(SENDGRID_API_KEY)
         response = sg.send(message)
 
-        print("Email sent:", response.status_code)
+        print("✅ Email Sent:", response.status_code)
 
     except Exception as e:
-        print("Email error:", e)
+        print("❌ EMAIL ERROR:", str(e))
+
 
 # ---------------- ASYNC EMAIL ----------------
 def send_email_async(to, subject, body):
-    try:
-        t = threading.Thread(target=send_email, args=(to, subject, body))
-        t.daemon = True
-        t.start()
-    except Exception as e:
-        print("Async error:", e)
+    t = threading.Thread(target=send_email, args=(to, subject, body))
+    t.start()
+
 
 # ---------------- HOME ----------------
 offers = [
@@ -64,7 +61,8 @@ offers = [
 def home():
     return render_template("index.html", offers=offers)
 
-# ---------------- STATIC PAGES ----------------
+
+# ---------------- PAGES ----------------
 @app.route("/booking")
 def booking():
     return render_template("booking.html")
@@ -93,6 +91,7 @@ def contact():
 def register():
     return render_template("register.html")
 
+
 # ---------------- BOOKING ----------------
 @app.route("/submit", methods=["POST"])
 def submit():
@@ -100,14 +99,11 @@ def submit():
         name = request.form.get("name")
         phone = request.form.get("phone")
         email = request.form.get("email")
-        service = request.form.get("services")
+        service = request.form.get("services") or "Not selected"
         date = request.form.get("date")
         time = request.form.get("time")
 
-        if not service:
-            service = "Not selected"
-
-        # ---------------- SAVE DB ----------------
+        # -------- SAVE TO DB --------
         try:
             db = get_db()
             cursor = db.cursor()
@@ -121,29 +117,18 @@ def submit():
             cursor.close()
             db.close()
 
-        except Exception as db_error:
-            print("DB ERROR:", db_error)
+            print("✅ DB Saved")
 
-        # ---------------- EMAIL ----------------
+        except Exception as db_error:
+            print("❌ DB ERROR:", db_error)
+
+        # -------- EMAIL --------
         try:
             is_bridal = "Bridal" in service
 
             # CLIENT EMAIL
             if email:
-                if is_bridal:
-                    user_msg = f"""
-Hi {name},
-
-✨ Bridal Booking Confirmed 👰✨
-
-Service: {service}
-Date: {date}
-Time: {time}
-
-We will contact you soon 💖
-"""
-                else:
-                    user_msg = f"""
+                user_msg = f"""
 Hi {name},
 
 Your appointment is confirmed 💖
@@ -151,8 +136,9 @@ Your appointment is confirmed 💖
 Service: {service}
 Date: {date}
 Time: {time}
-"""
 
+See you soon ✨
+"""
                 send_email_async(email, "Appointment Confirmed 💅", user_msg)
 
             # OWNER EMAIL
@@ -165,13 +151,12 @@ Service: {service}
 Date: {date}
 Time: {time}
 """
-
-            send_email_async(SENDER_EMAIL, "New Booking 🚨", owner_msg)
+            send_email_async(OWNER_EMAIL, "New Booking 🚨", owner_msg)
 
         except Exception as mail_error:
-            print("Email failed:", mail_error)
+            print("❌ EMAIL FAIL:", mail_error)
 
-        # ---------------- WHATSAPP ----------------
+        # -------- WHATSAPP --------
         message = f"""
 Hi Gllow Salon 💖
 
@@ -184,14 +169,13 @@ Time: {time}
 Name: {name}
 Phone: {phone}
 """
-
         whatsapp_url = "https://wa.me/919819545630?text=" + urllib.parse.quote(message)
 
         return redirect(whatsapp_url)
 
     except Exception as e:
-        print("ERROR:", e)
         return f"Error: {str(e)}"
+
 
 # ---------------- CONTACT ----------------
 @app.route("/contact_submit", methods=["POST"])
@@ -213,12 +197,13 @@ Message:
 {message}
 """
 
-        send_email_async(SENDER_EMAIL, "New Contact Form 📩", msg)
+        send_email_async(OWNER_EMAIL, "New Contact Form 📩", msg)
 
         return "Message Sent Successfully 💖"
 
     except Exception as e:
         return f"Error: {str(e)}"
+
 
 # ---------------- REGISTER ----------------
 @app.route("/register_submit", methods=["POST"])
@@ -249,13 +234,13 @@ Phone: {phone}
 Course: {course}
 Batch: {batch}
 """
-
-        send_email_async(SENDER_EMAIL, "New Student 🚨", owner_msg)
+        send_email_async(OWNER_EMAIL, "New Student 🚨", owner_msg)
 
         return "Registration Successful 🎓"
 
     except Exception as e:
         return f"Error: {str(e)}"
+
 
 # ---------------- RUN ----------------
 if __name__ == "__main__":
