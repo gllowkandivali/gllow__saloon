@@ -63,6 +63,10 @@ def home():
 @app.route("/check-key")
 def check_key():
     return str(os.environ.get("SENDGRID_API_KEY"))
+@app.route("/email-test")
+def email_test():
+    send_email("yourpersonalemail@gmail.com", "TEST", "WORKING?")
+    return "Check your email"
 
 # ---------------- PAGES ----------------
 @app.route("/booking")
@@ -173,8 +177,7 @@ Phone: {phone}
 """
         whatsapp_url = "https://wa.me/919819545630?text=" + urllib.parse.quote(message)
 
-        return redirect(whatsapp_url)
-
+        return render_template("confirmation.html")
     except Exception as e:
         return f"Error: {str(e)}"
 
