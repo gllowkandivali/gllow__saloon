@@ -30,7 +30,7 @@ def home():
 # ---------------- PAGES ----------------
 @app.route("/booking")
 def booking():
-    return render_template("booking.html")
+  return render_template("confirmation.html", msg="Booking Received!")
 
 @app.route("/services")
 def services():
@@ -50,11 +50,11 @@ def courses():
 
 @app.route("/contact")
 def contact():
-    return render_template("contact.html")
+return render_template("confirmation.html", msg="Message Sent Successfully!")
 
 @app.route("/register")
 def register():
-    return render_template("register.html")
+return render_template("confirmation.html", msg="Registration Successful 🎓")
 
 # ---------------- BOOKING ----------------
 @app.route("/submit", methods=["POST"])
