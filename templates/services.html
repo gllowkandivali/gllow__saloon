@@ -4,16 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Services — Gllow Beauty Salon & Academy</title>
-  <meta name="description" content="Explore our full range of salon services in Kandivali West.">
+  <meta name="description" content="Best salon services in Kandivali West – hair, nails, facial, waxing & more.">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
 
 <!-- NAVBAR -->
 <nav>
   <a href="/" class="logo">
-    <img src="{{ url_for('static', filename='images/logo.jpeg') }}" alt="Gllow Salon Logo">
-    <span>Gllow Beauty Salon & Academy</span>
+    <img src="{{ url_for('static', filename='images/logo.jpeg') }}">
+    <span>Gllow Beauty Salon</span>
   </a>
 
   <div class="hamburger" onclick="toggleNav()">
@@ -22,7 +23,7 @@
 
   <div class="nav-links" id="navLinks">
     <a href="/">Home</a>
-    <a href="/services">Services</a>
+    <a href="/services" class="active">Services</a>
     <a href="/gallery">Gallery</a>
     <a href="/about">About</a>
     <a href="/courses">Courses</a>
@@ -49,85 +50,134 @@
   <div class="service-item"><span>Hair Spa</span><span>₹500</span><a href="/booking?service=Hair Spa" class="btn">Book</a></div>
 </div>
 
-<!-- SKIN -->
+<!-- HAIR TREATMENTS -->
+<div class="service-box">
+  <h2>🎨 Hair Treatments</h2>
+
+  <div class="service-item"><span>Styling</span><span>₹499</span></div>
+  <div class="service-item"><span>Root Touch</span><span>₹799</span></div>
+  <div class="service-item"><span>Highlight</span><span>₹1999</span></div>
+  <div class="service-item"><span>Global</span><span>₹1999</span></div>
+  <div class="service-item"><span>Balayage</span><span>₹2499</span></div>
+
+  <div class="service-item"><span>Keratin</span><span>₹1999</span></div>
+  <div class="service-item"><span>Botox</span><span>₹2999</span></div>
+  <div class="service-item"><span>Straight</span><span>₹2999</span></div>
+  <div class="service-item"><span>Smooth</span><span>₹2999</span></div>
+  <div class="service-item"><span>Nano</span><span>₹3499</span></div>
+</div>
+
+<!-- FACE -->
 <div class="service-box">
   <h2>✨ Skin & Face</h2>
 
-  <div class="service-item"><span>Eyebrow Threading</span><span>₹50</span><a href="/booking?service=Eyebrow" class="btn">Book</a></div>
-  <div class="service-item"><span>Upper Lip</span><span>₹29</span><a href="/booking?service=Upper Lip" class="btn">Book</a></div>
-  <div class="service-item"><span>Upper Wax</span><span>₹49</span><a href="/booking?service=Upper Wax" class="btn">Book</a></div>
-  <div class="service-item"><span>Forehead</span><span>₹49</span><a href="/booking?service=Forehead" class="btn">Book</a></div>
-  <div class="service-item"><span>Full Face Threading</span><span>₹249</span><a href="/booking?service=Full Face" class="btn">Book</a></div>
+  <div class="service-item"><span>Eyebrow</span><span>₹50</span></div>
+  <div class="service-item"><span>Upper Lip</span><span>₹29</span></div>
+  <div class="service-item"><span>Upper Wax</span><span>₹49</span></div>
+  <div class="service-item"><span>Forehead</span><span>₹49</span></div>
+  <div class="service-item"><span>Full Face Thread</span><span>₹249</span></div>
 </div>
 
-<!-- WAXING -->
+<!-- FACIAL -->
 <div class="service-box">
-  <h2>🧴 Waxing</h2>
+  <h2>🌿 Facials & Cleanup</h2>
 
-  <div class="service-item"><span>Under Arms</span><span>Rica ₹119 / Honey ₹79</span><a href="/booking?service=Under Arms Wax" class="btn">Book</a></div>
-  <div class="service-item"><span>Half Hands</span><span>Rica ₹249 / Honey ₹199</span><a href="/booking?service=Half Hands Wax" class="btn">Book</a></div>
-  <div class="service-item"><span>Half Legs</span><span>Rica ₹399 / Honey ₹299</span><a href="/booking?service=Half Legs Wax" class="btn">Book</a></div>
-  <div class="service-item"><span>Full Arms</span><span>Rica ₹299 / Honey ₹249</span><a href="/booking?service=Full Arms Wax" class="btn">Book</a></div>
-  <div class="service-item"><span>Full Legs</span><span>Rica ₹499 / Honey ₹399</span><a href="/booking?service=Full Legs Wax" class="btn">Book</a></div>
-  <div class="service-item"><span>Full Body Wax</span><span>Rica ₹2399 / Honey ₹1799</span><a href="/booking?service=Full Body Wax" class="btn">Book</a></div>
+  <div class="service-item"><span>Cleanup Basic</span><span>₹250</span></div>
+  <div class="service-item"><span>VLCC</span><span>₹599</span></div>
+  <div class="service-item"><span>Gold Facial</span><span>₹799</span></div>
+  <div class="service-item"><span>Oxy</span><span>₹999</span></div>
+  <div class="service-item"><span>O3</span><span>₹1999</span></div>
 </div>
 
 <!-- MASSAGE -->
 <div class="service-box">
   <h2>💆 Massage</h2>
 
-  <div class="service-item"><span>Head Massage (20 min)</span><span>₹299</span><a href="/booking?service=Head Massage" class="btn">Book</a></div>
-  <div class="service-item"><span>Foot Massage (15 min)</span><span>₹199</span><a href="/booking?service=Foot Massage" class="btn">Book</a></div>
+  <div class="service-item"><span>Head Massage</span><span>₹299</span></div>
+  <div class="service-item"><span>Foot Massage</span><span>₹199</span></div>
+</div>
+
+<!-- BLEACH -->
+<div class="service-box">
+  <h2>🧴 Bleach</h2>
+
+  <div class="service-item"><span>Face</span><span>₹399</span></div>
+  <div class="service-item"><span>Back</span><span>₹599</span></div>
+  <div class="service-item"><span>Full Arms</span><span>₹499</span></div>
+  <div class="service-item"><span>Full Legs</span><span>₹649</span></div>
+  <div class="service-item"><span>Full Body</span><span>₹1499</span></div>
+</div>
+
+<!-- DETAN -->
+<div class="service-box">
+  <h2>🌿 De-Tan</h2>
+  <div class="service-item"><span>Basic</span><span>₹499</span></div>
+  <div class="service-item"><span>Body Polish</span><span>₹2199</span></div>
 </div>
 
 <!-- NAILS -->
 <div class="service-box">
   <h2>💅 Nails</h2>
 
-  <div class="service-item"><span>Basic Manicure</span><span>₹399</span><a href="/booking?service=Basic Manicure" class="btn">Book</a></div>
-  <div class="service-item"><span>Advance Manicure</span><span>₹649</span><a href="/booking?service=Advance Manicure" class="btn">Book</a></div>
-  <div class="service-item"><span>Basic Pedicure</span><span>₹500</span><a href="/booking?service=Basic Pedicure" class="btn">Book</a></div>
-  <div class="service-item"><span>Advance Pedicure</span><span>₹999</span><a href="/booking?service=Advance Pedicure" class="btn">Book</a></div>
-  <div class="service-item"><span>Mani + Pedi Combo</span><span>₹999</span><a href="/booking?service=Mani Pedi Combo" class="btn">Book</a></div>
+  <div class="service-item"><span>Gel Polish Hands</span><span>₹249</span></div>
+  <div class="service-item"><span>Gel Polish Feet</span><span>₹299</span></div>
+  <div class="service-item"><span>Removal</span><span>₹99</span></div>
+  <div class="service-item"><span>Repair</span><span>₹79</span></div>
+</div>
+
+<!-- WAXING (RICA vs HONEY) -->
+<div class="service-box">
+  <h2>🧴 Waxing</h2>
+
+  <div class="service-item">
+    <span>Under Arms</span>
+    <span><b>Rica ₹119</b> | Honey ₹79</span>
+    <a href="/booking?service=Under Arms Rica" class="btn">Rica</a>
+    <a href="/booking?service=Under Arms Honey" class="btn">Honey</a>
+  </div>
+
+  <div class="service-item">
+    <span>Half Hands</span>
+    <span><b>Rica ₹249</b> | Honey ₹199</span>
+    <a href="/booking?service=Half Hands Rica" class="btn">Rica</a>
+    <a href="/booking?service=Half Hands Honey" class="btn">Honey</a>
+  </div>
+
+  <div class="service-item">
+    <span>Full Legs</span>
+    <span><b>Rica ₹499</b> | Honey ₹399</span>
+    <a href="/booking?service=Full Legs Rica" class="btn">Rica</a>
+    <a href="/booking?service=Full Legs Honey" class="btn">Honey</a>
+  </div>
+
+  <div class="service-item">
+    <span>Full Body</span>
+    <span><b>Rica ₹2399</b> | Honey ₹1799</span>
+    <a href="/booking?service=Full Body Rica" class="btn">Rica</a>
+    <a href="/booking?service=Full Body Honey" class="btn">Honey</a>
+  </div>
 </div>
 
 <!-- COMBOS -->
 <div class="service-box">
   <h2>🎁 Combos</h2>
 
-  <div class="service-item"><span>Hair Wash + Blow Dry</span><span>₹349</span><a href="/booking?service=Hair Wash Blow Dry Combo" class="btn">Book</a></div>
-  <div class="service-item"><span>Hair Cut + Hair Wash + Blow Dry</span><span>₹449</span><a href="/booking?service=Hair Combo" class="btn">Book</a></div>
-  <div class="service-item"><span>Global + Highlight</span><span>₹3499</span><a href="/booking?service=Global Highlight Combo" class="btn">Book</a></div>
-  <div class="service-item"><span>Balayage + Global</span><span>₹3999</span><a href="/booking?service=Balayage Combo" class="btn">Book</a></div>
+  <div class="service-item"><span>Hair Wash + Blow</span><span>₹349</span></div>
+  <div class="service-item"><span>Haircut Combo</span><span>₹449</span></div>
+  <div class="service-item"><span>Global + Highlight</span><span>₹3499</span></div>
+  <div class="service-item"><span>Balayage Combo</span><span>₹3999</span></div>
 </div>
 
-<!-- WELLNESS -->
+<!-- SPECIAL -->
 <div class="service-box">
-  <h2>🛁 Wellness</h2>
-
-  <div class="service-item"><span>Steam Shower</span><span>₹499</span><a href="/booking?service=Steam Shower" class="btn">Book</a></div>
-</div>
-
-<!-- BRIDAL -->
-<div class="bridal-box">
-  <h2>👰 Bridal & Occasion Makeup</h2>
-  <p>Make your special day unforgettable with our expert bridal artists</p>
-  <p class="bridal-highlight">Bridal · Engagement · Party Makeup</p>
-  <p style="margin-top:10px; color:var(--text-muted);">
-    Full consultation included — customised for your skin tone & style
-  </p>
-
-  <a href="/booking?service=Bridal Makeup" class="bridal-btn">
-    Book Bridal Consultation
-  </a>
+  <h2>🌸 Special</h2>
+  <div class="service-item"><span>Steam Shower</span><span>₹499</span></div>
 </div>
 
 <!-- FOOTER -->
 <footer class="footer">
   <h2>Gllow Beauty Salon & Academy</h2>
-  <p>📞 +91 98195 45630</p>
-  <p>📍 Kandivali West, Mumbai</p>
-  <p>🕒 11 AM – 8 PM</p>
+  <p>📍 Kandivali West</p>
 </footer>
 
 <script>
