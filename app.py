@@ -16,21 +16,20 @@ def get_db():
         port=37012
     )
 
-# ---------------- HOME ----------------
-    offers = [
+# ---------------- OFFERS ----------------
+offers = [
     {"title": "Hair Spa @ ₹299 💇‍♀️", "desc": "Beat the heat care"},
     {"title": "Cleanup @ ₹249 🌿", "desc": "Fresh summer skin"},
     {"title": "Full Handwax @ ₹199 💅", "desc": "Smooth finish"},
     {"title": "Full Legwax @ ₹499 🦵", "desc": "Summer ready"},
     {"title": "Facial @ ₹499 ✨", "desc": "Glow boost"},
-
-    # NEW ADDED 👇
     {"title": "Crystal Mani-Pedi 1+1 @ ₹2999 💎", "desc": "Luxury combo offer"},
     {"title": "Gel Polish @ ₹199 💅", "desc": "Long lasting shine"},
     {"title": "Hair Wash @ ₹149 🚿", "desc": "Quick refresh"},
     {"title": "Head Massage @ ₹199 💆‍♀️", "desc": "Relax & de-stress"}
 ]
 
+# ---------------- HOME ----------------
 @app.route("/")
 def home():
     return render_template("index.html", offers=offers)
@@ -38,7 +37,7 @@ def home():
 # ---------------- PAGES ----------------
 @app.route("/booking")
 def booking():
-    return render_template("booking.html")  # ✅ FIXED (form page)
+    return render_template("booking.html")
 
 @app.route("/services")
 def services():
@@ -70,7 +69,7 @@ def submit():
     try:
         name = request.form.get("name")
         phone = request.form.get("phone")
-        service = request.form.get("service") or "Not selected"  # ✅ FIX
+        service = request.form.get("service") or "Not selected"
         date = request.form.get("date")
         time = request.form.get("time")
 
