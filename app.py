@@ -17,7 +17,6 @@ def get_db():
     )
 
 # ---------------- HOME ----------------
-offers = [
     offers = [
     {"title": "Hair Spa @ ₹299 💇‍♀️", "desc": "Beat the heat care"},
     {"title": "Cleanup @ ₹249 🌿", "desc": "Fresh summer skin"},
@@ -30,7 +29,6 @@ offers = [
     {"title": "Gel Polish @ ₹199 💅", "desc": "Long lasting shine"},
     {"title": "Hair Wash @ ₹149 🚿", "desc": "Quick refresh"},
     {"title": "Head Massage @ ₹199 💆‍♀️", "desc": "Relax & de-stress"}
-]
 ]
 
 @app.route("/")
