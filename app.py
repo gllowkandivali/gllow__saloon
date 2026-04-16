@@ -18,9 +18,19 @@ def get_db():
 
 # ---------------- HOME ----------------
 offers = [
-    {"title": "50% OFF Facial ✨", "desc": "Limited time offer"},
-    {"title": "Hair Spa @ ₹299 💇‍♀️", "desc": "Weekend Special"},
-    {"title": "Free Eyebrow with Facial 💅", "desc": "Combo Offer"}
+    offers = [
+    {"title": "Hair Spa @ ₹299 💇‍♀️", "desc": "Beat the heat care"},
+    {"title": "Cleanup @ ₹249 🌿", "desc": "Fresh summer skin"},
+    {"title": "Full Handwax @ ₹199 💅", "desc": "Smooth finish"},
+    {"title": "Full Legwax @ ₹499 🦵", "desc": "Summer ready"},
+    {"title": "Facial @ ₹499 ✨", "desc": "Glow boost"},
+
+    # NEW ADDED 👇
+    {"title": "Crystal Mani-Pedi 1+1 @ ₹2999 💎", "desc": "Luxury combo offer"},
+    {"title": "Gel Polish @ ₹199 💅", "desc": "Long lasting shine"},
+    {"title": "Hair Wash @ ₹149 🚿", "desc": "Quick refresh"},
+    {"title": "Head Massage @ ₹199 💆‍♀️", "desc": "Relax & de-stress"}
+]
 ]
 
 @app.route("/")
