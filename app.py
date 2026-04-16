@@ -30,7 +30,7 @@ def home():
 # ---------------- PAGES ----------------
 @app.route("/booking")
 def booking():
-  return render_template("confirmation.html", msg="Booking Received!")
+    return render_template("confirmation.html", msg="Booking Received!")
 
 @app.route("/services")
 def services():
@@ -50,11 +50,11 @@ def courses():
 
 @app.route("/contact")
 def contact():
-return render_template("confirmation.html", msg="Message Sent Successfully!")
+    return render_template("contact.html")  # 👈 FIX (form page hona chahiye)
 
 @app.route("/register")
 def register():
-return render_template("confirmation.html", msg="Registration Successful 🎓")
+    return render_template("register.html")  # 👈 FIX
 
 # ---------------- BOOKING ----------------
 @app.route("/submit", methods=["POST"])
@@ -66,7 +66,6 @@ def submit():
         date = request.form.get("date")
         time = request.form.get("time")
 
-        # -------- SAVE TO DB --------
         try:
             db = get_db()
             cursor = db.cursor()
@@ -80,13 +79,10 @@ def submit():
             cursor.close()
             db.close()
 
-            print("✅ DB Saved:", name, phone, service, date, time)
-
         except Exception as db_error:
             print("❌ DB ERROR:", db_error)
 
-        # -------- CONFIRMATION PAGE --------
-        return render_template("confirmation.html")
+        return render_template("confirmation.html", msg="Booking Confirmed 💅")
 
     except Exception as e:
         return f"Error: {str(e)}"
@@ -112,7 +108,7 @@ def contact_submit():
         cursor.close()
         db.close()
 
-        return "Message Saved 💖 We will contact you soon!"
+        return render_template("confirmation.html", msg="Message Sent Successfully 💖")
 
     except Exception as e:
         return f"Error: {str(e)}"
@@ -139,7 +135,7 @@ def register_submit():
         cursor.close()
         db.close()
 
-        return "Registration Saved 🎓"
+        return render_template("confirmation.html", msg="Registration Successful 🎓")
 
     except Exception as e:
         return f"Error: {str(e)}"
