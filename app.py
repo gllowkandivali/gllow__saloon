@@ -3,9 +3,7 @@ import mysql.connector
 import os
 from flask import send_from_directory
 
-@app.route('/sitemap.xml')
-def sitemap():
-    return send_from_directory('.', 'sitemap.xml')
+
 
 # ---------------- APP ----------------
 app = Flask(__name__)
@@ -150,6 +148,10 @@ def register_submit():
     except Exception as e:
         print("❌ ERROR:", e)
         return render_template("confirmation.html", msg="⚠️ Registration failed")
+
+@app.route('/sitemap.xml')
+def sitemap():
+    return send_from_directory('.', 'sitemap.xml')
 
 # ---------------- RUN ----------------
 if __name__ == "__main__":
