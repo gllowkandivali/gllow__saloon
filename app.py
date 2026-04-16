@@ -30,7 +30,7 @@ def home():
 # ---------------- PAGES ----------------
 @app.route("/booking")
 def booking():
-    return render_template("confirmation.html", msg="Booking Received!")
+    return render_template("booking.html")  # ✅ FIXED (form page)
 
 @app.route("/services")
 def services():
@@ -50,11 +50,11 @@ def courses():
 
 @app.route("/contact")
 def contact():
-    return render_template("contact.html")  # 👈 FIX (form page hona chahiye)
+    return render_template("contact.html")
 
 @app.route("/register")
 def register():
-    return render_template("register.html")  # 👈 FIX
+    return render_template("register.html")
 
 # ---------------- BOOKING ----------------
 @app.route("/submit", methods=["POST"])
@@ -62,30 +62,27 @@ def submit():
     try:
         name = request.form.get("name")
         phone = request.form.get("phone")
-        service = request.form.get("services") or "Not selected"
+        service = request.form.get("service") or "Not selected"  # ✅ FIX
         date = request.form.get("date")
         time = request.form.get("time")
 
-        try:
-            db = get_db()
-            cursor = db.cursor()
+        db = get_db()
+        cursor = db.cursor()
 
-            cursor.execute(
-                "INSERT INTO bookings (name, phone, service, date, time) VALUES (%s,%s,%s,%s,%s)",
-                (name, phone, service, date, time)
-            )
+        cursor.execute(
+            "INSERT INTO bookings (name, phone, service, date, time) VALUES (%s,%s,%s,%s,%s)",
+            (name, phone, service, date, time)
+        )
 
-            db.commit()
-            cursor.close()
-            db.close()
+        db.commit()
+        cursor.close()
+        db.close()
 
-        except Exception as db_error:
-            print("❌ DB ERROR:", db_error)
-
-        return render_template("confirmation.html", msg="Booking Confirmed 💅")
+        return render_template("confirmation.html", msg="✨ Booking Confirmed 💅")
 
     except Exception as e:
-        return f"Error: {str(e)}"
+        print("❌ ERROR:", e)
+        return render_template("confirmation.html", msg="⚠️ Something went wrong")
 
 # ---------------- CONTACT ----------------
 @app.route("/contact_submit", methods=["POST"])
@@ -108,10 +105,11 @@ def contact_submit():
         cursor.close()
         db.close()
 
-        return render_template("confirmation.html", msg="Message Sent Successfully 💖")
+        return render_template("confirmation.html", msg="💖 Message Sent Successfully!")
 
     except Exception as e:
-        return f"Error: {str(e)}"
+        print("❌ ERROR:", e)
+        return render_template("confirmation.html", msg="⚠️ Failed to send message")
 
 # ---------------- REGISTER ----------------
 @app.route("/register_submit", methods=["POST"])
@@ -135,10 +133,11 @@ def register_submit():
         cursor.close()
         db.close()
 
-        return render_template("confirmation.html", msg="Registration Successful 🎓")
+        return render_template("confirmation.html", msg="🎓 Registration Successful!")
 
     except Exception as e:
-        return f"Error: {str(e)}"
+        print("❌ ERROR:", e)
+        return render_template("confirmation.html", msg="⚠️ Registration failed")
 
 # ---------------- RUN ----------------
 if __name__ == "__main__":
