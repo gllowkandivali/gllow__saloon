@@ -1,6 +1,11 @@
 from flask import Flask, render_template, request
 import mysql.connector
 import os
+from flask import send_from_directory
+
+@app.route('/sitemap.xml')
+def sitemap():
+    return send_from_directory('.', 'sitemap.xml')
 
 # ---------------- APP ----------------
 app = Flask(__name__)
