@@ -1,4 +1,4 @@
-/* ============================================
+ /* ============================================
    GLLOW BEAUTY SALON & ACADEMY — LUXURY DESIGN
    ============================================ */
 
@@ -323,18 +323,21 @@ nav {
 .offers-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
+  gap: 1px;
   border: 1px solid var(--gold-border);
   border-radius: var(--radius-lg);
   overflow: hidden;
   margin-top: 40px;
 }
+
 .offer-card {
   background: var(--black-3);
-  padding: 30px;
-  border: 1px solid var(--gold-border);
-  border-radius: var(--radius-lg);
+  padding: 36px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   transition: var(--transition);
+  border-right: 1px solid var(--gold-border);
 }
 
 .offer-card:last-child { border-right: none; }
@@ -1120,4 +1123,4 @@ form:not(.styled-form) select option {
     transform: scale(1);
     opacity: 1;
   }
-} 
+}
