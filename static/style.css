@@ -1,4 +1,4 @@
- /* ============================================
+/* ============================================
    GLLOW BEAUTY SALON & ACADEMY — LUXURY DESIGN
    ============================================ */
 
@@ -1050,77 +1050,57 @@ form:not(.styled-form) select option {
   .video-gallery { grid-template-columns: 1fr 1fr; }
   .awards img { width: 150px; height: 150px; }
 }
-/* YOUTUBE VIDEO FIX */
-.video-gallery iframe {
-  width: 100%;
-  aspect-ratio: 9/16;
-  border-radius: 12px;
-  border: 1px solid rgba(201,168,76,0.35);
+.offer-banner {
+  max-width: 900px;   /* 👈 center + limited width */
+  margin: 30px auto;
 }
-/* ── CONFIRMATION / SUCCESS SCREEN ── */
-.confirmation-wrapper {
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+.mothers-section {
   text-align: center;
-  padding: 60px 20px;
+  margin: 50px 0;
 }
 
-.confirmation-box {
-  background: var(--black-3);
-  border: 1px solid var(--gold-border);
-  border-radius: var(--radius-lg);
-  padding: 40px 30px;
-  max-width: 500px;
-  width: 100%;
-  box-shadow: 0 0 40px rgba(201,168,76,0.12);
-  animation: popIn 0.4s ease;
-}
-
-.confirmation-icon {
-  font-size: 50px;
-  margin-bottom: 15px;
-}
-
-.confirmation-title {
+.mothers-section h2 {
+  color: #C9A84C;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 28px;
-  color: var(--gold);
-  margin-bottom: 10px;
-}
-
-.confirmation-text {
-  font-size: 14px;
-  color: var(--text-muted);
-  line-height: 1.6;
   margin-bottom: 20px;
 }
 
-.confirmation-btn {
+.mothers-card {
+  max-width: 600px;
+  margin: auto;
+  background: #161616;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(201,168,76,0.3);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.mothers-card img {
+  width: 100%;
+  height: auto;
+}
+
+.mothers-content {
+  padding: 20px;
+}
+
+.mothers-content h3 {
+  color: #e91e63;
+  margin-bottom: 10px;
+}
+
+.mothers-content p {
+  color: #bbb;
+  font-size: 14px;
+}
+
+.mothers-content a {
   display: inline-block;
-  padding: 12px 22px;
-  background: var(--gold);
-  color: var(--black);
+  margin-top: 12px;
+  background: #e91e63;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
   text-decoration: none;
-  border-radius: var(--radius);
-  font-weight: 500;
-  transition: var(--transition);
-}
-
-.confirmation-btn:hover {
-  background: var(--gold-light);
-  transform: translateY(-2px);
-}
-
-/* animation */
-@keyframes popIn {
-  from {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
 }
