@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<script type="application/ld+json">
+  <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BeautySalon",
@@ -17,7 +18,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gllow Beauty Salon & Academy — Women’s Salon in Kandivali West</title>
-  <meta name="description" content="Best women's beauty salon in Kandivali West. Hair, makeup, nails & academy courses.">
+  <meta name="description"
+    content="Best women's beauty salon in Kandivali West. Hair, makeup, nails & academy courses.">
   <meta name="keywords" content=" Ladies Salon Kandivali, Haircut Mumbai, Bridal Makeup, Beauty Courses">
   <meta property="og:title" content="Gllow Beauty Salon & Academy">
   <meta property="og:description" content="Affordable & professional salon in Kandivali West">
@@ -52,13 +54,17 @@
       transition: transform 0.6s ease;
     }
 
-    .ba-card:hover img { transform: scale(1.05); }
+    .ba-card:hover img {
+      transform: scale(1.05);
+    }
 
     .ba-label {
       position: absolute;
-      bottom: 0; left: 0; right: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
       padding: 20px 16px 14px;
-      background: linear-gradient(transparent, rgba(0,0,0,0.85));
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
       font-family: 'Cormorant Garamond', serif;
       font-size: 17px;
       font-style: italic;
@@ -75,7 +81,7 @@
       align-items: center;
       gap: 18px;
       background: #161616;
-      border: 1px solid rgba(201,168,76,0.35);
+      border: 1px solid rgba(201, 168, 76, 0.35);
       border-radius: 12px;
       padding: 24px 28px;
       margin-bottom: 20px;
@@ -90,8 +96,19 @@
       line-height: 1;
     }
 
-    .review-overall .stars { font-size: 18px; color: #f5a623; letter-spacing: 2px; }
-    .review-overall .count { font-size: 12px; color: #888; margin-top: 4px; letter-spacing: 0.06em; text-transform: uppercase; }
+    .review-overall .stars {
+      font-size: 18px;
+      color: #f5a623;
+      letter-spacing: 2px;
+    }
+
+    .review-overall .count {
+      font-size: 12px;
+      color: #888;
+      margin-top: 4px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
 
     .reviews-cards {
       display: grid;
@@ -101,14 +118,14 @@
 
     .review-card {
       background: #161616;
-      border: 1px solid rgba(201,168,76,0.25);
+      border: 1px solid rgba(201, 168, 76, 0.25);
       border-radius: 12px;
       padding: 22px 20px;
       transition: border-color 0.3s ease, transform 0.3s ease;
     }
 
     .review-card:hover {
-      border-color: rgba(201,168,76,0.6);
+      border-color: rgba(201, 168, 76, 0.6);
       transform: translateY(-3px);
     }
 
@@ -132,11 +149,25 @@
       flex-shrink: 0;
     }
 
-    .avatar-h { background: #7c3aed; color: #fff; }
-    .avatar-k { background: #4b5563; color: #fff; }
-    .avatar-r { background: #7c3aed; color: #fff; }
+    .avatar-h {
+      background: #7c3aed;
+      color: #fff;
+    }
 
-    .reviewer-info { flex: 1; min-width: 0; }
+    .avatar-k {
+      background: #4b5563;
+      color: #fff;
+    }
+
+    .avatar-r {
+      background: #7c3aed;
+      color: #fff;
+    }
+
+    .reviewer-info {
+      flex: 1;
+      min-width: 0;
+    }
 
     .reviewer-name {
       font-size: 14px;
@@ -153,7 +184,12 @@
       margin-top: 2px;
     }
 
-    .review-stars { font-size: 13px; color: #f5a623; letter-spacing: 1px; margin-bottom: 10px; }
+    .review-stars {
+      font-size: 13px;
+      color: #f5a623;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
 
     .review-time {
       font-size: 11px;
@@ -199,7 +235,7 @@
       aspect-ratio: 9/16;
       object-fit: cover;
       border-radius: 12px;
-      border: 1px solid rgba(201,168,76,0.35);
+      border: 1px solid rgba(201, 168, 76, 0.35);
     }
 
     /* ── AWARDS: contain image, no crop ── */
@@ -215,7 +251,7 @@
       width: 200px;
       height: 200px;
       background: #161616;
-      border: 1px solid rgba(201,168,76,0.35);
+      border: 1px solid rgba(201, 168, 76, 0.35);
       border-radius: 12px;
       display: flex;
       align-items: center;
@@ -228,7 +264,7 @@
 
     .award-item:hover {
       border-color: #C9A84C;
-      box-shadow: 0 0 20px rgba(201,168,76,0.2);
+      box-shadow: 0 0 20px rgba(201, 168, 76, 0.2);
       transform: scale(1.04);
     }
 
@@ -241,286 +277,302 @@
 
     /* mobile tweaks */
     @media (max-width: 768px) {
-      .reviews-cards { grid-template-columns: 1fr; }
-      .ba-grid { grid-template-columns: 1fr 1fr; max-width: 100%; }
-      .ba-card { max-height: 280px; }
-      .award-item { width: 150px; height: 150px; }
+      .reviews-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .ba-grid {
+        grid-template-columns: 1fr 1fr;
+        max-width: 100%;
+      }
+
+      .ba-card {
+        max-height: 280px;
+      }
+
+      .award-item {
+        width: 150px;
+        height: 150px;
+      }
     }
 
     @media (max-width: 480px) {
-      .ba-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .ba-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<!-- NAVBAR -->
-<nav>
-  <a href="/" class="logo">
-    <img src="{{ url_for('static', filename='images/logo.jpeg') }}" alt="Gllow Salon Logo">
-    <span>Gllow Beauty Salon & Academy</span>
-  </a>
-  <div class="hamburger" onclick="toggleNav()">
-    <span></span><span></span><span></span>
-  </div>
-  <div class="nav-links" id="navLinks">
-    <a href="/">Home</a>
-    <a href="/services">Services</a>
-    <a href="/gallery">Gallery</a>
-    <a href="/about">About</a>
-    <a href="/courses">Courses</a>
-    <a href="/contact">Contact</a>
-    <a href="/booking" class="btn-nav">Book Now</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<div class="hero">
-  <p class="hero-eyebrow">Kandivali West · Est. 2020</p>
- <h1>Best Women's Salon in Kandivali West<br><em>Where Your Gllow Begins</em></h1>
-<p class="hero-tagline">Exclusively for Women • Hair • Makeup • Skin • Nails</p>
-  <p>Premium beauty services exclusively for women in Kandivali West</p>
-  <div class="hero-actions">
-    <a href="/booking" class="btn btn-primary">Book Appointment</a>
-    <a href="/services" class="btn btn-outline">Explore Services</a>
-  </div>
-  <div class="hero-divider"></div>
-</div>
-<div class="container">
-  <p style="max-width:700px; margin:auto; text-align:center; color:#bbb;">
-  Gllow Beauty Salon & Academy is a premium women's salon in Kandivali West, Mumbai offering expert haircuts, bridal makeup, skincare, nail services, and professional beauty courses.
-  </p>
-</div>
-<div class="mothers-section">
-  <h2>🌸 Mother’s Day Special</h2>
-  
-  <div class="mothers-card">
-    <img src="{{ url_for('static', filename='images/mothersday.jpeg') }}" alt="Mother's Day Offer">
-    
-    <div class="mothers-content">
-      <h3>Flat ₹1999 Only</h3>
-      <p>Limited Time Offer • Book Now</p>
-      <a href="/booking">Book Appointment</a>
+  <!-- NAVBAR -->
+  <nav>
+    <a href="/" class="logo">
+      <img src="{{ url_for('static', filename='images/logo.jpeg') }}" alt="Gllow Salon Logo">
+      <span>Gllow Beauty Salon & Academy</span>
+    </a>
+    <div class="hamburger" onclick="toggleNav()">
+      <span></span><span></span><span></span>
     </div>
-  </div>
-</div>
-
-<div class="container">
-
-<!-- OFFERS -->
-<div class="container">
-  <p class="section-label">Limited Time</p>
-  <h2 class="section-title">Special <em>Offers</em></h2>
-  <div class="rule"></div>
-  <div class="offers-grid">
-    {% for offer in offers %}
-    <div class="offer-card">
-      <h3>{{ offer.title }}</h3>
-      <p>{{ offer.desc }}</p>
-      <a href="/booking" class="btn btn-outline" style="margin-top:8px; display:inline-block; font-size:12px; padding:9px 20px;">Book Now</a>
+    <div class="nav-links" id="navLinks">
+      <a href="/">Home</a>
+      <a href="/services">Services</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/about">About</a>
+      <a href="/courses">Courses</a>
+      <a href="/contact">Contact</a>
+      <a href="/booking" class="btn-nav">Book Now</a>
     </div>
-    {% endfor %}
-  </div>
-</div>
+  </nav>
 
-<!-- TRANSFORMATIONS — medium sized images -->
-<div class="container">
-  <p class="section-label">Before & After</p>
-  <h2 class="section-title">Client <em>Transformations</em></h2>
-  <div class="rule"></div>
-  <div class="ba-grid">
-    <div class="ba-card">
-      <img src="{{ url_for('static', filename='images/ba_1.jpeg') }}" alt="Hair transformation for women in Kandivali salon">
-      <div class="ba-label">Hair Transformation</div>
+  <!-- HERO -->
+  <div class="hero">
+    <p class="hero-eyebrow">Kandivali West · Est. 2020</p>
+    <h1>Best Women's Salon in Kandivali West<br><em>Where Your Gllow Begins</em></h1>
+    <p class="hero-tagline">Exclusively for Women • Hair • Makeup • Skin • Nails</p>
+    <p>Premium beauty services exclusively for women in Kandivali West</p>
+    <div class="hero-actions">
+      <a href="/booking" class="btn btn-primary">Book Appointment</a>
+      <a href="/services" class="btn btn-outline">Explore Services</a>
     </div>
-    <div class="ba-card">
-      <img src="{{ url_for('static', filename='images/ba_3.jpeg') }}" alt="Makeover">
-      <div class="ba-label">Full Makeover</div>
-    </div>
+    <div class="hero-divider"></div>
   </div>
-</div>
+  <div class="container">
+    <p style="max-width:700px; margin:auto; text-align:center; color:#bbb;">
+      Gllow Beauty Salon & Academy is a premium women's salon in Kandivali West, Mumbai offering expert haircuts, bridal
+      makeup, skincare, nail services, and professional beauty courses.
+    </p>
+  </div>
+  <div class="container">
 
-<!-- GOOGLE REVIEWS — built from image content -->
-<div class="container">
-  <p class="section-label">Google Reviews</p>
-  <h2 class="section-title">What Our Clients <em>Say</em></h2>
-  <div class="rule"></div>
-
-  <div class="reviews-section">
-
-    <!-- Overall score (from review4.jpeg: 5.0 ★★★★★ 3 reviews) -->
-    <div class="review-overall">
-      <div>
-        <div class="score">5.0</div>
-        <div class="stars">★★★★★</div>
-        <div class="count">3 Google Reviews</div>
+    <!-- OFFERS -->
+    <div class="container">
+      <p class="section-label">Limited Time</p>
+      <h2 class="section-title">Special <em>Offers</em></h2>
+      <div class="rule"></div>
+      <div class="offers-grid">
+        {% for offer in offers %}
+        <div class="offer-card">
+          <h3>{{ offer.title }}</h3>
+          <p>{{ offer.desc }}</p>
+          <a href="/booking" class="btn btn-outline"
+            style="margin-top:8px; display:inline-block; font-size:12px; padding:9px 20px;">Book Now</a>
+        </div>
+        {% endfor %}
       </div>
-      <div style="flex:1;">
-        <div style="font-size:13px; color:#888; line-height:1.7;">
-          Rated <strong style="color:#C9A84C;">5 out of 5</strong> based on<br>all customer reviews
+    </div>
+
+    <!-- TRANSFORMATIONS — medium sized images -->
+    <div class="container">
+      <p class="section-label">Before & After</p>
+      <h2 class="section-title">Client <em>Transformations</em></h2>
+      <div class="rule"></div>
+      <div class="ba-grid">
+        <div class="ba-card">
+          <img src="{{ url_for('static', filename='images/ba_1.jpeg') }}"
+            alt="Hair transformation for women in Kandivali salon">
+          <div class="ba-label">Hair Transformation</div>
+        </div>
+        <div class="ba-card">
+          <img src="{{ url_for('static', filename='images/ba_3.jpeg') }}" alt="Makeover">
+          <div class="ba-label">Full Makeover</div>
         </div>
       </div>
     </div>
 
-    <!-- Individual review cards (from review1, 2, 3 images) -->
-    <div class="reviews-cards">
+    <!-- GOOGLE REVIEWS — built from image content -->
+    <div class="container">
+      <p class="section-label">Google Reviews</p>
+      <h2 class="section-title">What Our Clients <em>Say</em></h2>
+      <div class="rule"></div>
 
-      <!-- review1.jpeg: Hetvi Shah — "Beautiful salon loved the haircut" -->
-      <div class="review-card">
-        <div class="review-card-header">
-          <div class="reviewer-avatar avatar-h">H</div>
-          <div class="reviewer-info">
-            <div class="reviewer-name">Hetvi Shah</div>
-            <div class="reviewer-meta">4 reviews on Google</div>
+      <div class="reviews-section">
+
+        <!-- Overall score (from review4.jpeg: 5.0 ★★★★★ 3 reviews) -->
+        <div class="review-overall">
+          <div>
+            <div class="score">5.0</div>
+            <div class="stars">★★★★★</div>
+            <div class="count">3 Google Reviews</div>
+          </div>
+          <div style="flex:1;">
+            <div style="font-size:13px; color:#888; line-height:1.7;">
+              Rated <strong style="color:#C9A84C;">5 out of 5</strong> based on<br>all customer reviews
+            </div>
           </div>
         </div>
-        <div class="review-stars">★★★★★ <span class="review-time">Today</span></div>
-        <p class="review-text">"Beautiful salon loved the haircut"</p>
-      </div>
 
-      <!-- review2.jpeg: Khushi Maurya — "The best place to treat your hair and skin..." -->
-      <div class="review-card">
-        <div class="review-card-header">
-          <div class="reviewer-avatar avatar-k">K</div>
-          <div class="reviewer-info">
-            <div class="reviewer-name">Khushi Maurya</div>
-            <div class="reviewer-meta">1 review on Google</div>
+        <!-- Individual review cards (from review1, 2, 3 images) -->
+        <div class="reviews-cards">
+
+          <!-- review1.jpeg: Hetvi Shah — "Beautiful salon loved the haircut" -->
+          <div class="review-card">
+            <div class="review-card-header">
+              <div class="reviewer-avatar avatar-h">H</div>
+              <div class="reviewer-info">
+                <div class="reviewer-name">Hetvi Shah</div>
+                <div class="reviewer-meta">4 reviews on Google</div>
+              </div>
+            </div>
+            <div class="review-stars">★★★★★ <span class="review-time">Today</span></div>
+            <p class="review-text">"Beautiful salon loved the haircut"</p>
           </div>
-        </div>
-        <div class="review-stars">★★★★★ <span class="review-time">2 months ago</span></div>
-        <p class="review-text">"The best place to treat your hair and skin 😍 staff and facilities are also superb."</p>
-      </div>
 
-      <!-- review3.jpeg: Rupa Kanakia — "Very nice servic and salon interior is class..." -->
-      <div class="review-card">
-        <div class="review-card-header">
-          <div class="reviewer-avatar avatar-r">R</div>
-          <div class="reviewer-info">
-            <div class="reviewer-name">Rupa Kanakia</div>
-            <div class="reviewer-meta">1 review on Google</div>
+          <!-- review2.jpeg: Khushi Maurya — "The best place to treat your hair and skin..." -->
+          <div class="review-card">
+            <div class="review-card-header">
+              <div class="reviewer-avatar avatar-k">K</div>
+              <div class="reviewer-info">
+                <div class="reviewer-name">Khushi Maurya</div>
+                <div class="reviewer-meta">1 review on Google</div>
+              </div>
+            </div>
+            <div class="review-stars">★★★★★ <span class="review-time">2 months ago</span></div>
+            <p class="review-text">"The best place to treat your hair and skin 😍 staff and facilities are also superb."
+            </p>
           </div>
+
+          <!-- review3.jpeg: Rupa Kanakia — "Very nice servic and salon interior is class..." -->
+          <div class="review-card">
+            <div class="review-card-header">
+              <div class="reviewer-avatar avatar-r">R</div>
+              <div class="reviewer-info">
+                <div class="reviewer-name">Rupa Kanakia</div>
+                <div class="reviewer-meta">1 review on Google</div>
+              </div>
+            </div>
+            <div class="review-stars">★★★★★ <span class="review-time">2 months ago</span></div>
+            <p class="review-text">"Very nice service and salon interior is class, thank you Gllow Beauty for good
+              service."</p>
+          </div>
+
         </div>
-        <div class="review-stars">★★★★★ <span class="review-time">2 months ago</span></div>
-        <p class="review-text">"Very nice service and salon interior is class, thank you Gllow Beauty for good service."</p>
+
+        <div class="google-badge">Verified on Google Maps</div>
       </div>
-
     </div>
 
-    <div class="google-badge">Verified on Google Maps</div>
-  </div>
-</div>
+    <!-- VIDEO TESTIMONIALS — autoplay muted loop -->
+    <!-- VIDEO TESTIMONIALS -->
+    <!-- VIDEO TESTIMONIALS -->
+    <!-- VIDEO TESTIMONIALS -->
+    <div class="container">
+      <p class="section-label">Client Videos</p>
+      <h2 class="section-title">Our Happy Clients 💬</h2>
+      <div class="rule"></div>
 
-<!-- VIDEO TESTIMONIALS — autoplay muted loop -->
-<!-- VIDEO TESTIMONIALS -->
-<!-- VIDEO TESTIMONIALS -->
-<!-- VIDEO TESTIMONIALS -->
-<div class="container">
-  <p class="section-label">Client Videos</p>
-  <h2 class="section-title">Our Happy Clients 💬</h2>
-  <div class="rule"></div>
+      <div style="display:flex; gap:20px; justify-content:center; margin-top:20px; flex-wrap:wrap;">
 
-  <div style="display:flex; gap:20px; justify-content:center; margin-top:20px; flex-wrap:wrap;">
+        <!-- VIDEO 1 -->
+        <video width="250" height="400" controls playsinline preload="auto"
+          poster="https://res.cloudinary.com/dqhklks7j/video/upload/so_0/review1_c2mqt1.jpg"
+          style="border-radius:12px; border:1px solid rgba(201,168,76,0.35);">
+          <source src="https://res.cloudinary.com/dqhklks7j/video/upload/review1_c2mqt1.mp4" type="video/mp4">
+        </video>
 
-    <!-- VIDEO 1 -->
-    <video width="250" height="400" controls playsinline preload="auto"
-      poster="https://res.cloudinary.com/dqhklks7j/video/upload/so_0/review1_c2mqt1.jpg"
-      style="border-radius:12px; border:1px solid rgba(201,168,76,0.35);">
-      <source src="https://res.cloudinary.com/dqhklks7j/video/upload/review1_c2mqt1.mp4" type="video/mp4">
-    </video>
+        <!-- VIDEO 2 -->
+        <video width="250" height="400" controls playsinline preload="auto"
+          poster="https://res.cloudinary.com/dqhklks7j/video/upload/so_0/review2_bsfpxw.jpg"
+          style="border-radius:12px; border:1px solid rgba(201,168,76,0.35);">
+          <source src="https://res.cloudinary.com/dqhklks7j/video/upload/review2_bsfpxw.mp4" type="video/mp4">
+        </video>
 
-    <!-- VIDEO 2 -->
-    <video width="250" height="400" controls playsinline preload="auto"
-      poster="https://res.cloudinary.com/dqhklks7j/video/upload/so_0/review2_bsfpxw.jpg"
-      style="border-radius:12px; border:1px solid rgba(201,168,76,0.35);">
-      <source src="https://res.cloudinary.com/dqhklks7j/video/upload/review2_bsfpxw.mp4" type="video/mp4">
-    </video>
-
-  </div>
-</div>
-<!-- INTERIOR -->
-<div class="container">
-  <p class="section-label">Our Space</p>
-  <h2 class="section-title">Inside <em>Gllow</em></h2>
-  <div class="rule"></div>
-  <div class="gallery">
-    <img src="{{ url_for('static', filename='images/interior1.jpeg') }}" onclick="openPopup(this.src)" alt="Salon Interior">
-    <img src="{{ url_for('static', filename='images/interior2.jpeg') }}" onclick="openPopup(this.src)" alt="Salon Interior">
-    <img src="{{ url_for('static', filename='images/interior3.jpeg') }}" onclick="openPopup(this.src)" alt="Salon Interior">
-    <img src="{{ url_for('static', filename='images/interior4.jpeg') }}" onclick="openPopup(this.src)" alt="Salon Interior">
-    <img src="{{ url_for('static', filename='images/interior5.jpeg') }}" onclick="openPopup(this.src)" alt="Salon Interior">
-  </div>
-</div>
-
-<!-- AWARDS — object-fit: contain, no cropping -->
-<div class="container">
-  <p class="section-label">Recognition</p>
-  <h2 class="section-title">Our <em>Achievements</em></h2>
-  <div class="rule"></div>
-  <div class="awards">
-    <div class="award-item" onclick="openPopup('{{ url_for('static', filename='images/award1.jpeg') }}')">
-      <img src="{{ url_for('static', filename='images/award1.jpeg') }}" alt="Award">
+      </div>
     </div>
-    <div class="award-item" onclick="openPopup('{{ url_for('static', filename='images/award2.jpeg') }}')">
-      <img src="{{ url_for('static', filename='images/award2.jpeg') }}" alt="Award">
+    <!-- INTERIOR -->
+    <div class="container">
+      <p class="section-label">Our Space</p>
+      <h2 class="section-title">Inside <em>Gllow</em></h2>
+      <div class="rule"></div>
+      <div class="gallery">
+        <img src="{{ url_for('static', filename='images/interior1.jpeg') }}" onclick="openPopup(this.src)"
+          alt="Salon Interior">
+        <img src="{{ url_for('static', filename='images/interior2.jpeg') }}" onclick="openPopup(this.src)"
+          alt="Salon Interior">
+        <img src="{{ url_for('static', filename='images/interior3.jpeg') }}" onclick="openPopup(this.src)"
+          alt="Salon Interior">
+        <img src="{{ url_for('static', filename='images/interior4.jpeg') }}" onclick="openPopup(this.src)"
+          alt="Salon Interior">
+        <img src="{{ url_for('static', filename='images/interior5.jpeg') }}" onclick="openPopup(this.src)"
+          alt="Salon Interior">
+      </div>
     </div>
-    <div class="award-item" onclick="openPopup('{{ url_for('static', filename='images/award3.jpeg') }}')">
-      <img src="{{ url_for('static', filename='images/award3.jpeg') }}" alt="Award">
+
+    <!-- AWARDS — object-fit: contain, no cropping -->
+    <div class="container">
+      <p class="section-label">Recognition</p>
+      <h2 class="section-title">Our <em>Achievements</em></h2>
+      <div class="rule"></div>
+      <div class="awards">
+        <div class="award-item" onclick="openPopup('{{ url_for('static', filename='images/award1.jpeg') }}')">
+          <img src="{{ url_for('static', filename='images/award1.jpeg') }}" alt="Award">
+        </div>
+        <div class="award-item" onclick="openPopup('{{ url_for('static', filename='images/award2.jpeg') }}')">
+          <img src="{{ url_for('static', filename='images/award2.jpeg') }}" alt="Award">
+        </div>
+        <div class="award-item" onclick="openPopup('{{ url_for('static', filename='images/award3.jpeg') }}')">
+          <img src="{{ url_for('static', filename='images/award3.jpeg') }}" alt="Award">
+        </div>
+        <div class="award-item" onclick="openPopup('{{ url_for('static', filename='images/award4.jpeg') }}')">
+          <img src="{{ url_for('static', filename='images/award4.jpeg') }}" alt="Award">
+        </div>
+      </div>
     </div>
-    <div class="award-item" onclick="openPopup('{{ url_for('static', filename='images/award4.jpeg') }}')">
-      <img src="{{ url_for('static', filename='images/award4.jpeg') }}" alt="Award">
+
+    <!-- POPUP -->
+    <div id="popup" class="popup" onclick="closePopup()">
+      <span class="close">&times;</span>
+      <img id="popup-img" class="popup-img">
     </div>
-  </div>
-</div>
 
-<!-- POPUP -->
-<div id="popup" class="popup" onclick="closePopup()">
-  <span class="close">&times;</span>
-  <img id="popup-img" class="popup-img">
-</div>
+    <!-- FLOATING -->
+    <a href="https://wa.me/919819545630" class="floating-whatsapp" target="_blank" title="Chat on WhatsApp">💬</a>
+    <button onclick="scrollTopFunc()" class="top-btn" title="Back to top">↑</button>
 
-<!-- FLOATING -->
-<a href="https://wa.me/919819545630" class="floating-whatsapp" target="_blank" title="Chat on WhatsApp">💬</a>
-<button onclick="scrollTopFunc()" class="top-btn" title="Back to top">↑</button>
+    <div class="container">
+      <h2 class="section-title">Frequently <em>Asked Questions</em></h2><br>
 
-<div class="container">
-  <h2 class="section-title">Frequently <em>Asked Questions</em></h2><br>
+      <p><strong>Is this a women's salon?</strong><br>Yes, Gllow is exclusively for women.</p><br>
 
-  <p><strong>Is this a women's salon?</strong><br>Yes, Gllow is exclusively for women.</p><br>
+      <p><strong>Do you offer bridal makeup?</strong><br>Yes, we specialize in bridal and party makeup.</p><br>
 
-  <p><strong>Do you offer bridal makeup?</strong><br>Yes, we specialize in bridal and party makeup.</p><br>
+      <p><strong>Where is your salon located?</strong><br>We are located in Kandivali West, Mumbai.</p><br>
+    </div>
 
-  <p><strong>Where is your salon located?</strong><br>We are located in Kandivali West, Mumbai.</p><br>
-</div>
+    <!-- FOOTER -->
+    <footer class="footer">
+      <h2>Gllow Beauty Salon & Academy</h2>
+      <p>
+      <p>Exclusive Women's Beauty Salon in Kandivali West, Mumbai</p>
+      </p>
+      <p>📞 +91 98195 45630</p>
+      <p>📍 Shop No 1, Vardhaman Kutir, Shankar Lane, Kandivali West, Mumbai</p>
+      <p>🕒 Open: 11AM – 8PM (All Days)</p>
+      <div class="socials">
+        <a href="https://www.instagram.com/_gllow_beauty_salon_?igsh=MWc0cTFhaWJvcHBlYQ==" target="_blank">Instagram</a>
+        <a href="https://wa.me/919819545630" target="_blank">WhatsApp</a>
+        <a href="https://maps.app.goo.gl/AGz8FnccqGcKP7ES8" target="_blank">Location</a>
+      </div>
+      <p class="copy">© 2026 Gllow Beauty Salon & Academy. All Rights Reserved.</p>
+    </footer>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <h2>Gllow Beauty Salon & Academy</h2>
-  <p><p>Exclusive Women's Beauty Salon in Kandivali West, Mumbai</p></p>
-  <p>📞 +91 98195 45630</p>
-<p>📍 Shop No 1, Vardhaman Kutir, Shankar Lane, Kandivali West, Mumbai</p>
-<p>🕒 Open: 11AM – 8PM (All Days)</p>
-  <div class="socials">
-    <a href="https://www.instagram.com/_gllow_beauty_salon_?igsh=MWc0cTFhaWJvcHBlYQ==" target="_blank">Instagram</a>
-    <a href="https://wa.me/919819545630" target="_blank">WhatsApp</a>
-    <a href="https://maps.app.goo.gl/AGz8FnccqGcKP7ES8" target="_blank">Location</a>
-  </div>
-  <p class="copy">© 2026 Gllow Beauty Salon & Academy. All Rights Reserved.</p>
-</footer>
-
-<script>
-function openPopup(src) {
-  document.getElementById("popup").style.display = "flex";
-  document.getElementById("popup-img").src = src;
-}
-function closePopup() {
-  document.getElementById("popup").style.display = "none";
-}
-function scrollTopFunc() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-function toggleNav() {
-  document.getElementById("navLinks").classList.toggle("open");
-}
-</script>
+    <script>
+      function openPopup(src) {
+        document.getElementById("popup").style.display = "flex";
+        document.getElementById("popup-img").src = src;
+      }
+      function closePopup() {
+        document.getElementById("popup").style.display = "none";
+      }
+      function scrollTopFunc() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      function toggleNav() {
+        document.getElementById("navLinks").classList.toggle("open");
+      }
+    </script>
 </body>
+
 </html>
