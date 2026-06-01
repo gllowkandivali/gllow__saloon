@@ -351,21 +351,29 @@ Gllow Beauty Salon & Academy is one of the best women's salons in Kandivali West
 </p>
 
     <!-- OFFERS -->
-    <div class="container">
-      <p class="section-label">Limited Time</p>
-      <h2 class="section-title">Special <em>Offers</em></h2>
-      <div class="rule"></div>
-      <div class="offers-grid">
-        {% for offer in offers %}
-        <div class="offer-card">
-          <h3>{{ offer.title }}</h3>
-          <p>{{ offer.desc }}</p>
-          <a href="/booking" class="btn btn-outline"
-            style="margin-top:8px; display:inline-block; font-size:12px; padding:9px 20px;">Book Now</a>
-        </div>
-        {% endfor %}
-      </div>
-    </div>
+   <div class="container">
+  <p class="section-label">Limited Time</p>
+  <h2 class="section-title">June <em>Offers</em></h2>
+  <div class="rule"></div>
+
+  <div style="text-align:center; margin-top:25px;">
+    <img
+      src="{{ url_for('static', filename='images/juneoffers.jpeg') }}"
+      alt="June Offers"
+      style="
+        width:100%;
+        max-width:900px;
+        border-radius:15px;
+        box-shadow:0 5px 20px rgba(0,0,0,0.25);
+      ">
+  </div>
+
+  <div style="text-align:center; margin-top:20px;">
+    <a href="/booking" class="btn btn-primary">
+      Book Appointment
+    </a>
+  </div>
+</div>
 
     <!-- TRANSFORMATIONS — medium sized images -->
     <div class="container">
