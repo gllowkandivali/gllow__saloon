@@ -19,23 +19,11 @@ def get_db():
         port=37012
     )
 
-# ---------------- OFFERS ----------------
-offers = [
-    {"title": "Hair Spa @ ₹299 💇‍♀️", "desc": "Beat the heat care"},
-    {"title": "Cleanup @ ₹249 🌿", "desc": "Fresh summer skin"},
-    {"title": "Full Handwax @ ₹199 💅", "desc": "Smooth finish"},
-    {"title": "Full Legwax @ ₹499 🦵", "desc": "Summer ready"},
-    {"title": "Facial @ ₹499 ✨", "desc": "Glow boost"},
-    {"title": "Crystal Mani-Pedi 1+1 @ ₹2999 💎", "desc": "Luxury combo offer"},
-    {"title": "Gel Polish @ ₹199 💅", "desc": "Long lasting shine"},
-    {"title": "Hair Wash @ ₹149 🚿", "desc": "Quick refresh"},
-    {"title": "Head Massage @ ₹199 💆‍♀️", "desc": "Relax & de-stress"}
-]
 
 # ---------------- HOME ----------------
 @app.route("/")
 def home():
-    return render_template("index.html", offers=offers)
+    return render_template("index.html")
 
 # ---------------- PAGES ----------------
 @app.route("/booking")
